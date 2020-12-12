@@ -32,7 +32,8 @@
         else if ( imgvalid()==1 )
         {
             $path='image/';
-            $target = $path .$name. basename($pic['name']);
+            $new_name=str_replace(' ', '', $name);
+            $target = $path .$new_name. basename($pic['name']);
             move_uploaded_file($pic['tmp_name'],$target);
             $query="insert into series (name,genre,path,intro) values ('$name','$genre','$target','$desc')";
             $rs=mysqli_query($conn,$query)or die("Could Not Perform the Query");
